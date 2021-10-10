@@ -1,25 +1,50 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; 
+import Cards from './components/cards/cards';
+import Header from './components/header/header';
 import './App.css';
 
-function App() {
+export default function App() {
+  const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const currentPage = 1;
+  const todosPerPage = 24;
+
+  useEffect(() => {
+      const fetchPosts = async () => {
+          try {
+              setLoading(true);
+              const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
+              setTodos(res.data);
+              setLoading(false);
+            } catch (e) {
+              // error handler
+              console.log(new Error());
+          }
+      }
+
+      fetchPosts();
+  }, []);
+
+  // These counting are needful number of shown cards
+  // The logic is created for future scalability (in theory)
+  // for recreation tables of cards 
+
+  const indexOfLastTodo = currentPage * todosPerPage;
+  const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+  const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
+
+  // log for view before: res = []
+  // after: (200) [...{}]
+  // is how many todos was loaded through axios
+
+  console.log(todos)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+      <Cards todos={currentTodos} loading={loading} />
+    </>
+  )
 }
 
-export default App;
