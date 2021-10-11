@@ -17,27 +17,3 @@ export const HeaderGreeting = styled.p`
     font-size: 30px;
     color: #fff;
 `
-
-export const HeaderSortContainer = styled.div`
-    font-size: 30px;
-    font-weight: bold;
-    color: #fff;
-`
-
-export const SortingButton = styled.button`
-    margin: 0 0 0 5vh;
-    font-size: 25px;
-    font-weight: bold;
-    border-radius: 30px;
-    background-color: red;
-    color: #fff;
-    border: none;
-    height: 5vh;
-    width: 30vh;
-
-    :hover {
-        transition: 0.3s ease-in-out;
-        color: #000;
-        background-color: #fff;
-    } 
-`

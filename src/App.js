@@ -38,7 +38,9 @@ export default function App() {
   // after: (200) [...{}]
   // is how many todos was loaded through axios
 
-  console.log(todos)
+  // console.log(todos)
+
+  
 
   return (
     <>

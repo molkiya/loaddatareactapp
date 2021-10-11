@@ -2,21 +2,14 @@ import React from 'react';
 import { 
     HeaderContainer,
     HeaderGreeting,
-    HeaderSortContainer,
-    SortingButton
 } from './headerComponents';
 
 const Header = () => {
     return (
         <HeaderContainer>
             <HeaderGreeting>
-                Альфа-Банк
+                Loading Data
             </HeaderGreeting>
-            <HeaderSortContainer>
-                <SortingButton>
-                    Sort for Liked
-                </SortingButton>
-            </HeaderSortContainer>
         </HeaderContainer>
     );
 };

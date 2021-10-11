@@ -3,10 +3,7 @@ import Loader from '../loader/loader';
 import {
     CardsContainer,
     CardWrapper,
-    Card,
-    ButtonContainer,
-    ButtonForLike,
-    ButtonForDelete
+    Card
 } from './cardsElements';
 
 const Cards = ({ todos, loading }) => {
@@ -15,23 +12,20 @@ const Cards = ({ todos, loading }) => {
         return <Loader />
     }
 
-    return <CardsContainer>
+    return (
+        <CardsContainer>
             {todos.map(todo => (
                 <CardWrapper key={todo.id}>
                     <Card>
+                        <div>
+                            Number: {todo.id}
+                        </div>
                         {todo.title}
                     </Card>
-                    <ButtonContainer>
-                        <ButtonForLike>
-                            Like!
-                        </ButtonForLike>
-                        <ButtonForDelete>
-                            Delete!
-                        </ButtonForDelete>
-                    </ButtonContainer>
                 </CardWrapper>
             ))}
-    </CardsContainer>
+        </CardsContainer>
+    ) 
 };
 
 export default Cards;
